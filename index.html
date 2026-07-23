@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para o Amor da Minha Vida ❤️</title>
+
+  <!-- ==========================================================================
+       ESTILOS CSS - DESIGN PREMIUM, GLASSMORPHISM E ANIMAÇÕES
+       ========================================================================== -->
+  <style>
+    /* --- RESET E VARIÁVEIS DE DESIGN --- */
+    :root {
+      --bg-dark: #0a0518;
+      --bg-card: rgba(255, 255, 255, 0.07);
+      --bg-card-hover: rgba(255, 255, 255, 0.12);
+      --border-card: rgba(255, 255, 255, 0.15);
+      --primary-pink: #ff4b8b;
+      --primary-pink-glow: rgba(255, 75, 139, 0.4);
+      --secondary-purple: #9d4edd;
+      --accent-gold: #ffd166;
+      --text-main: #f8f9fa;
+      --text-muted: #d0c7e0;
+      --font-serif: Georgia, "Times New Roman", Times, serif;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 30px;
+      --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* --- CANVAS DE FUNDO E PARTICULAS --- */
+    #stars-canvas, #hearts-canvas, #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+
+    #stars-canvas {
+      z-index: -2;
+    }
+
+    #hearts-canvas {
+      z-index: 10;
+    }
+
+    #confetti-canvas {
+      z-index: 1000;
+    }
+
+    /* --- GRADIENTE ANIMADO DE FUNDO --- */
+    .bg-gradient-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(157, 78, 221, 0.18) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(255, 75, 139, 0.15) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 50%, rgba(10, 5, 24, 0.8) 0%, #0a0518 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* --- EFEITO GLASSMORPHISM UTILITÁRIO --- */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-glass);
+      transition: var(--transition-smooth);
+    }
+
+    .glass-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 12px 40px rgba(255, 75, 139, 0.2);
+    }
+
+    /* --- LAYOUT E CONTAINER --- */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 90px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title-block {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title-block .icon-badge {
+      font-size: 2.2rem;
+      display: inline-block;
+      margin-bottom: 10px;
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* --- REVEAL ANIMATION ON SCROLL --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- BOTÕES --- */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary-pink), var(--secondary-purple));
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 30px var(--primary-pink-glow);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(255, 75, 139, 0.6);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-primary:hover::after {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       1. TELA INICIAL (HERO SECTION)
+       ========================================================================== */
+    #hero {
+      height: 100vh;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hero-badge {
+      padding: 8px 20px;
+      background: rgba(255, 75, 139, 0.15);
+      border: 1px solid rgba(255, 75, 139, 0.3);
+      border-radius: 30px;
+      font-size: 0.95rem;
+      color: var(--primary-pink);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      line-height: 1.15;
+      background: linear-gradient(135deg, #ffffff 20%, #ffe0ec 60%, var(--primary-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(255, 75, 139, 0.2);
+    }
+
+    .hero-quote {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-muted);
+      font-style: italic;
+      max-width: 650px;
+      margin-bottom: 10px;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       2. CARTA ANIMADA
+       ========================================================================== */
+    .letter-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      position: relative;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .letter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .letter-stamp {
+      font-size: 1.8rem;
+    }
+
+    .letter-body {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: #fff0f6;
+      min-height: 200px;
+      white-space: pre-line;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.2em;
+      background-color: var(--primary-pink);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+
+    .letter-controls {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ==========================================================================
+       3. LINHA DO TEMPO
+       ========================================================================== */
+    .timeline {
+      position: relative;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary-pink), var(--secondary-purple), transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 40px;
+      position: relative;
+      margin-bottom: 45px;
+      width: 50%;
+    }
+
+    .timeline-item:nth-child(even) {
+      align-self: flex-end;
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: 40px;
+      margin-left: 50%;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 20px;
+      right: -16px;
+      width: 32px;
+      height: 32px;
+      background: var(--bg-dark);
+      border: 2px solid var(--primary-pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      box-shadow: 0 0 15px var(--primary-pink-glow);
+      z-index: 3;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      right: auto;
+      left: -16px;
+    }
+
+    .timeline-card {
+      padding: 24px;
+      width: 100%;
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--primary-pink);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .timeline-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ==========================================================================
+       4. GALERIA DE FOTOS E LIGHTBOX
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .gallery-item {
+      position: relative;
+      height: 280px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-item img, .gallery-item svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(10, 5, 24, 0.85) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-item:hover img, .gallery-item:hover svg {
+      transform: scale(1.08);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .gallery-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Lightbox Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 2, 12, 0.9);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 800px;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 10;
+      background: rgba(0,0,0,0.4);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-media {
+      max-height: 60vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+
+    .modal-media img, .modal-media svg {
+      max-height: 60vh;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .modal-info {
+      padding: 24px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       5. CONTADOR DO AMOR
+       ========================================================================== */
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .counter-card {
+      padding: 24px 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .counter-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-pink), var(--secondary-purple));
+    }
+
+    .counter-number {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 15px var(--primary-pink-glow);
+    }
+
+    .counter-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       6. MOTIVOS PELOS QUAIS EU TE AMO
+       ========================================================================== */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .reason-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: default;
+    }
+
+    .reason-icon {
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 75, 139, 0.12);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .reason-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .reason-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       7. MENSAGENS SURPRESA
+       ========================================================================== */
+    .surprise-container {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .surprise-box {
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 30px 0;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      border: 1px stroke rgba(255, 255, 255, 0.15);
+    }
+
+    .surprise-message {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #ffe6f0;
+      line-height: 1.7;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* ==========================================================================
+       10. PLAYER DE MÚSICA FIXO
+       ========================================================================== */
+    .music-player-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(10, 5, 24, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .play-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary-pink);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px var(--primary-pink-glow);
+    }
+
+    .track-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .track-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Wave visualizer */
+    .sound-wave {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 16px;
+    }
+
+    .sound-wave span {
+      width: 3px;
+      height: 100%;
+      background: var(--primary-pink);
+      border-radius: 3px;
+      animation: quiet 0.5s ease-in-out infinite alternate;
+    }
+
+    .sound-wave.playing span:nth-child(1) { animation-duration: 0.4s; }
+    .sound-wave.playing span:nth-child(2) { animation-duration: 0.3s; }
+    .sound-wave.playing span:nth-child(3) { animation-duration: 0.6s; }
+    .sound-wave.playing span:nth-child(4) { animation-duration: 0.2s; }
+
+    /* ==========================================================================
+       11. SEÇÃO NOSSOS SONHOS (CHECKLIST)
+       ========================================================================== */
+    .dreams-list {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .dream-item {
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dream-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.05rem;
+    }
+
+    .dream-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-pink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .dream-item.completed .dream-checkbox {
+      background: var(--primary-pink);
+      color: #fff;
+    }
+
+    .dream-item.completed .dream-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .progress-bar-container {
+      max-width: 700px;
+      margin: 30px auto 0 auto;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-pink), var(--accent-gold));
+      transition: width 0.6s ease;
+    }
+
+    /* ==========================================================================
+       12. PEDIDO FINAL / MENSAGEM ESPECIAL
+       ========================================================================== */
+    .final-section {
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .final-card {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      background: linear-gradient(135deg, rgba(255, 75, 139, 0.12), rgba(157, 78, 221, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .final-message {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      line-height: 1.8;
+      color: #fff;
+    }
+
+    .btn-giant {
+      font-size: 1.4rem;
+      padding: 20px 48px;
+      border-radius: 60px;
+      animation: pulseButton 2s infinite;
+    }
+
+    /* ==========================================================================
+       13. RODAPÉ
+       ========================================================================== */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       ANIMAÇÕES KEYFRAMES
+       ========================================================================== */
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,75,139,0.5)); }
+      50% { transform: scale(1.1); filter: drop-shadow(0 0 20px rgba(255,75,139,0.9)); }
+    }
+
+    @keyframes pulseButton {
+      0%, 100% { box-shadow: 0 0 20px var(--primary-pink-glow); }
+      50% { box-shadow: 0 0 40px rgba(255, 75, 139, 0.8); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes quiet {
+      25% { transform: scaleY(0.6); }
+      50% { transform: scaleY(0.4); }
+      75% { transform: scaleY(0.8); }
+      100% { transform: scaleY(1); }
+    }
+
+    /* Flash de luz na tela */
+    .screen-flash {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, rgba(255,182,193,0.8) 0%, rgba(255,75,139,0.9) 100%);
+      z-index: 3000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .screen-flash.active {
+      opacity: 1;
+    }
+
+    /* --- RESPONSIVIDADE --- */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-item {
+        width: 100%;
+        padding-left: 55px;
+        padding-right: 0;
+      }
+      .timeline-item:nth-child(even) {
+        margin-left: 0;
+        padding-left: 55px;
+      }
+      .timeline-dot, .timeline-item:nth-child(even) .timeline-dot {
+        left: 4px;
+      }
+      .music-player-widget {
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 14px;
+      }
+      .track-info {
+        display: none;
+      }
+      .letter-container {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Gradiente de Fundo e Canvas de Estrelas/Corações -->
+  <div class="bg-gradient-overlay"></div>
+  <canvas id="stars-canvas"></canvas>
+  <canvas id="hearts-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+  <div id="flash-overlay" class="screen-flash"></div>
+
+  <!-- Player de Música Flutuante -->
+  <div class="music-player-widget">
+    <button id="play-pause-btn" class="play-btn" onclick="toggleAudio()" title="Tocar / Pausar Música">▶</button>
+    <div class="track-info">
+      <span class="track-title">A música que me lembra você ❤️</span>
+      <span id="track-status" class="track-status">Clique para tocar</span>
+    </div>
+    <div id="sound-wave" class="sound-wave">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- Audio Elemento Oculto (Utilizado se CONFIG.audioUrl estiver definido) -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="ThoseEyes.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+</audio>
+
+  <!-- ==========================================================================
+       1. TELA INICIAL (HERO)
+       ========================================================================== -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✨ Um Presente Especial</div>
+      <h1 class="hero-title" id="hero-name">Para Meu Amor</h1>
+      <p class="hero-quote" id="hero-quote">"Cada segundo ao seu lado é o capítulo mais lindo da minha história."</p>
+      <button class="btn-primary" onclick="iniciarExperiencia()">
+        <span>Começar Nossa História</span> ❤️
+      </button>
+    </div>
+    <div class="scroll-indicator" onclick="scrollToSection('letter-section')">
+      <span>Role para explorar</span>
+      <span>↓</span>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ==========================================================================
+         2. CARTA ANIMADA
+         ========================================================================== -->
+    <section id="letter-section" class="reveal">
+      <div class="section-title-block">
+        <span class="icon-badge">💌</span>
+        <h2 class="section-title">Uma Carta Para Você</h2>
+        <p class="section-subtitle">Palavras do fundo do meu coração</p>
+      </div>
+
+      <div class="letter-container glass-card">
+        <div class="letter-header">
+          <span style="font-weight: 600; color: var(--primary-pink);">De: Seu Amor</span>
+          <span class="letter-stamp">🌹</span>
+        </div>
+        <div class="letter-body">
+          <span id="typewriter-text"></span><span id="cursor" class="typing-cursor"></span>
+        </div>
+        <div class="letter-controls">
+          <button class="btn-secondary" onclick="pularDigitacao()">⏩ Ver Tudo</button>
+          <button class="btn-secondary" onclick="reiniciarCarta()">🔄 Reler Carta</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. CONTADOR DO AMOR
+         ========================================================================== -->
+    <section id="counter-section" class="reveal">
+      <div class="section-title-block">
+        <span class="icon-badge">⏳</span>
+        <h2 class="section-title">Nosso Tempo Juntos</h2>
+        <p class="section-subtitle">Contando cada segundo inesquecível desde que começamos</p>
+      </div>
+
+      <div class="counter-grid">
+        <div class="counter-card glass-card">
+          <div class="counter-number" id="count-years">0</div>
+          <div class="counter-label">Anos</div>
+        </div>
+        <div class="counter-card glass-card">
+          <div class="counter-number" id="count-months">0</div>
+          <div class="counter-label">Meses</div>
+        </div>
+        <div class="counter-card glass-card">
+          <div class="counter-number" id="count-days">0</div>
+          <div class="counter-label">Dias</div>
+        </div>
+        <div class="counter-card glass-card">
+          <div class="counter-number" id="count-hours">0</div>
+          <div class="counter-label">Horas</div>
+        </div>
+        <div class="counter-card glass-card">
+          <div class="counter-number" id="count-minutes">0</div>
+          <div class="counter-label">Minutos</div>
+        </div>
+        <div class="counter-card glass-card">
+          <div class="counter-number" id="count-seconds">0</div>
+          <div class="counter-label">Segundos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. LINHA DO TEMPO
+         ========================================================================== -->
+    <section id="timeline-section" class="reveal">
+      <div class="section-title-block">
+        <span class="icon-badge">📖</span>
+        <h2 class="section-title">Nossa Linha do Tempo</h2>
+        <p class="section-subtitle">Os momentos marcantes da nossa linda história</p>
+      </div>
+
+      <div class="timeline" id="timeline-container">
+        <!-- Renderizado via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. GALERIA DE FOTOS
+         ========================================================================== -->
+    <section id="gallery-section" class="reveal">
+      <div class="section-title-block">
+        <span class="icon-badge">📸</span>
+        <h2 class="section-title">Nossa Galeria de Memórias</h2>
+        <p class="section-subtitle">Momentos inesquecíveis guardados no coração</p>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Renderizado via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. MOTIVOS PELOS QUAIS EU TE AMO
+         ========================================================================== -->
+    <section id="reasons-section" class="reveal">
+      <div class="section-title-block">
+        <span class="icon-badge">❤️</span>
+        <h2 class="section-title">Por Que Eu Te Amo</h2>
+        <p class="section-subtitle">Alguns dos infinitos motivos para se apaixonar por você todos os dias</p>
+      </div>
+
+      <div class="reasons-grid" id="reasons-grid">
+        <!-- Renderizado via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. MENSAGENS SURPRESA
+         ========================================================================== -->
+    <section id="surprise-section" class="reveal">
+      <div class="section-title-block">
+        <span class="icon-badge">🎁</span>
+        <h2 class="section-title">Caixinha de Surpresas</h2>
+        <p class="section-subtitle">Clique no botão para receber uma mensagem de carinho especial</p>
+      </div>
+
+      <div class="surprise-container glass-card">
+        <div class="surprise-box">
+          <p id="surprise-text" class="surprise-message">"Clique no botão abaixo para revelar um amor em palavras..."</p>
+        </div>
+        <button class="btn-primary" onclick="mostrarProximaSurpresa()">✨ Clique para uma surpresa ❤️</button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         11. SEÇÃO NOSSOS SONHOS
+         ========================================================================== -->
+    <section id="dreams-section" class="reveal">
+      <div class="section-title-block">
+        <span class="icon-badge">🌟</span>
+        <h2 class="section-title">Nossos Sonhos</h2>
+        <p class="section-subtitle">Metas e desejos para realizar juntos no nosso futuro</p>
+      </div>
+
+      <div class="dreams-list" id="dreams-list">
+        <!-- Renderizado via JavaScript -->
+      </div>
+
+      <div class="progress-bar-container">
+        <div id="dreams-progress" class="progress-bar-fill"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         12. PEDIDO FINAL / DECLARAÇÃO
+         ========================================================================== -->
+    <section id="final-section" class="final-section reveal">
+      <div class="final-card glass-card">
+        <span style="font-size: 3rem;">💖</span>
+        <p class="final-message">
+          Você é a pessoa mais incrível, carinhosa e especial que já conheci.
+          Obrigado por transformar a minha vida e por ser meuporto seguro.
+          Minha escolha de todos os dias será sempre você.
+        </p>
+        <button class="btn-primary btn-giant" onclick="dispararExplosaoDeAmor()">
+          Eu Te Amo! ❤️
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==========================================================================
+       13. RODAPÉ
+       ========================================================================== -->
+  <footer>
+    <p>Feito com todo o meu amor e carinho especialmente para você ✨</p>
+    <p id="footer-date" style="margin-top: 6px; font-weight: 600; color: #fff;"></p>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAIS (LIGHTBOX E FINAL)
+       ========================================================================== -->
+  <div id="lightbox-modal" class="modal-overlay" onclick="fecharModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="modal-close" onclick="fecharModal()">&times;</span>
+      <div class="modal-media" id="modal-media-content"></div>
+      <div class="modal-info">
+        <h3 id="modal-title" style="font-size: 1.3rem; margin-bottom: 6px;"></h3>
+        <p id="modal-desc" style="color: var(--text-muted);"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       LÓGICA JAVASCRIPT PURA
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       CONFIGURAÇÕES FACILMENTE EDITÁVEIS PELO USUÁRIO
+       ========================================================================== */
+    const CONFIG = {
+      // 1. Nome da namorada
+      nomeNamorada: "Luisa",
+
+      // 2. Data em que vocês se conheceram / começaram a namorar (Ano, Mês-1, Dia, Hora, Minuto)
+      // Nota: Mês vai de 0 a 11 (Ex: Maio = 4, Junho = 5, Julho = 6)
+      dataInicio: new Date(2025, 7, 27, 18, 42, 0),
+
+      // 3. Frase principal na tela inicial
+      fraseHero: "Cada segundo ao seu lado é o capítulo mais lindo da minha história.",
+
+      // 4. Texto da Carta Animada
+      textoCarta: `Minha vida,
+
+Desde o momento em que você entrou no meu mundo, tudo ganhou uma nova cor e um novo significado. O seu sorriso ilumina os meus piores dias, e o seu carinho traz uma paz que eu jamais pensei encontrar em alguém.
+
+Criei este cantinho especial para deixar registrado um pouquinho do tamanho do meu amor por você. Cada detalhe aqui foi pensado para te lembrar o quanto você é única, especial e fundamental na minha vida.
+
+Obrigado por ser minha melhor amiga, minha parceira de todas as horas e o grande amor da minha existência. Mal posso esperar para viver todos os nossos próximos capítulos juntos.
+
+Com todo o meu amor e para todo o sempre,
+Seu Amor. ❤️`,
+
+      // 5. Linha do Tempo
+      linhaDoTempo: [
+        { data: "19 de Julho", titulo: "❤️ O dia do Shopping", desc: "Aquele dia inesquecível em que meus olhos encontraram os seus e soube que você era diferente." },
+        { data: "02 de Setembro", titulo: "🌹 Nosso Primeiro Beijo", desc: "Eu estava meio nervoso no dia, mas você tomou uma atitude rs." },
+        { data: "04 de Abril", titulo: "✨ Nosso Primeiro Piquenique Juntos", desc: "Ficamos no parque, criamos memórias e descobri que qualquer lugar é perfeito ao seu lado." },
+        { data: "08 de Setembro", titulo: "🎂 Seu Aniversário", desc: "Celebrar a sua vida e ver esse seu sorriso gigante foi um dos melhores presentes do meu ano." },
+        { data: "25 de Dezembro", titulo: "🎆 Primeiro natal juntos", desc: "Começar o dia nos seus braços me deu a certeza de que teria o melhor presente da minha vida." }
+      ],
+
+      // 6. Galeria de Fotos (Ilustrações em SVG integradas para funcionar 100% offline).
+      // DICA DE EDIÇÃO: Você pode substituir 'svg' abaixo pelo caminho das suas fotos reais (Ex: "fotos/foto1.jpg")!
+      galeria: [
+        {
+          titulo: "Sob o Céu Estrelado",
+          desc: "Conversando sobre tudo e nada até altas horas.",
+          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#12082b"/><circle cx="200" cy="150" r="70" fill="#ffd166" opacity="0.8"/><circle cx="180" cy="140" r="60" fill="#12082b"/><path d="M150 350 C180 280 220 280 250 350 Z" fill="#ff4b8b" opacity="0.7"/><circle cx="100" cy="80" r="2" fill="#fff"/><circle cx="300" cy="90" r="3" fill="#fff"/><circle cx="250" cy="50" r="2" fill="#fff"/></svg>`
+        },
+        {
+          titulo: "Pôr do Sol Inesquecível",
+          desc: "A luz do fim de tarde refletida no seu olhar.",
+          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff7b00"/><stop offset="100%" stop-color="#6a040f"/></linearGradient></defs><rect width="400" height="400" fill="url(#g1)"/><circle cx="200" cy="220" r="80" fill="#ffdda1"/><path d="M0 260 Q 200 240 400 260 L 400 400 L 0 400 Z" fill="#2b0938"/></svg>`
+        },
+        {
+          titulo: "Café da Manhã e Risadas",
+          desc: "O simples prazer de começar o dia ao seu lado.",
+          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#1d1135"/><path d="M120 220 C 120 300 280 300 280 220 Z" fill="#fff" opacity="0.15"/><path d="M180 180 Q 200 140 190 100" stroke="#ff4b8b" stroke-width="4" fill="none" opacity="0.6"/><path d="M210 180 Q 230 140 220 100" stroke="#ff4b8b" stroke-width="4" fill="none" opacity="0.6"/></svg>`
+        },
+        {
+          titulo: "Caminhada de Mãos Dadas",
+          desc: "Onde você estiver é o meu caminho favorito.",
+          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#0f172a"/><path d="M200 120 C 120 20 20 180 200 320 C 380 180 280 20 200 120 Z" fill="#ff4b8b" opacity="0.4"/><circle cx="200" cy="180" r="40" fill="#9d4edd" opacity="0.6"/></svg>`
+        },
+        {
+          titulo: "Flores e Carinho",
+          desc: "Pequenos gestos para demonstrar um amor gigante.",
+          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#200d2a"/><circle cx="200" cy="200" r="50" fill="#ff4b8b"/><circle cx="150" cy="200" r="40" fill="#ff75a0" opacity="0.7"/><circle cx="250" cy="200" r="40" fill="#ff75a0" opacity="0.7"/><circle cx="200" cy="150" r="40" fill="#ff75a0" opacity="0.7"/><circle cx="200" cy="250" r="40" fill="#ff75a0" opacity="0.7"/></svg>`
+        },
+        {
+          titulo: "Abraço Acolhedor",
+          desc: "Meu lugar favorito no universo inteiro.",
+          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#13091f"/><path d="M100 200 Q 200 100 300 200 Q 200 300 100 200 Z" fill="#ffd166" opacity="0.3"/><circle cx="200" cy="200" r="60" fill="#ff4b8b" opacity="0.5"/></svg>`
+        }
+      ],
+
+      // 7. Motivos pelos quais te amo
+      motivos: [
+        { icon: "✨", titulo: "Seu Sorriso", desc: "Tem o poder mágico de iluminar qualquer dia cinzento e transmitir paz instantânea." },
+        { icon: "💖", titulo: "Seu Carinho", desc: "A forma doce e acolhedora como você cuida de mim nos mínimos detalhes." },
+        { icon: "🧠", titulo: "Sua Inteligência", desc: "Amo ouvir você falar sobre suas ideias, projetos e a forma como enxerga o mundo." },
+        { icon: "🤗", titulo: "Seu Abraço", desc: "O meu lugar favorito no planeta. Onde todo o cansaço do dia simplesmente desaparece." },
+        { icon: "😂", titulo: "Seu Humor", desc: "Essa sua risada gostosa e a forma fácil como nos divertimos com bobagens." },
+        { icon: "🌟", titulo: "Seu Coração", desc: "A sua bondade genuína com as pessoas e a pureza da sua alma." },
+        { icon: "👀", titulo: "Seus Olhos", desc: "Consigo ver todo o meu futuro e felicidade refletidos quando olho para você." },
+        { icon: "🤝", titulo: "Seu Apoio", desc: "A certeza de que tenho a melhor parceira para qualquer desafio da vida." },
+        { icon: "👑", titulo: "Sua Essência", desc: "Você é única, autêntica e a mulher mais apaixonante que já conheci." }
+      ],
+
+      // 8. Mais de 30 Mensagens Surpresa Diferentes
+      mensagensSurpresa: [
+        "Seu sorriso é a minha visão favorita no mundo inteiro. ❤️",
+        "Com você, aprendi o verdadeiro e mais puro significado de amar.",
+        "Pensar em você é o meu momento favorito do dia.",
+        "Se eu pudesse escolher novamente, escolheria você mil vezes!",
+        "Seu abraço tem o poder de curar qualquer dia difícil.",
+        "Estar com você transforma instantes simples em grandes memórias.",
+        "Obrigado por ser essa pessoa carinhosa e incrível.",
+        "Você é a poesia mais linda que a vida escreveu para mim.",
+        "Amo o som da sua risada e como ela me contagia.",
+        "Meu lugar favorito no planeta é ao seu lado.",
+        "A cada segundo que passa, meu amor por você só aumenta.",
+        "Você é minha namorada, melhor amiga e parceira de vida.",
+        "Com você, até os dias de chuva parecem ensolarados. ☀️",
+        "Seu carinho faz a minha alma sorrir.",
+        "Você trouxe as cores mais vivas para o meu mundo.",
+        "Amar você é tão natural quanto respirar.",
+        "A vida é infinitamente mais doce e bonita com você.",
+        "Você é a resposta de todos os meus melhores sonhos.",
+        "Espero passar todos os meus futuros dias te fazendo sorrir.",
+        "Sua voz é a minha melodia favorita.",
+        "Não existe abraço melhor do que o seu.",
+        "Agradeço todos os dias por ter você na minha caminhada.",
+        "Você é perfeita exatamente do seu jeitinho único.",
+        "Nosso amor é a minha história favorita de contar.",
+        "Eu te amo mais hoje do que ontem, e amanhã te amarei ainda mais!",
+        "Segurar a sua mão é ter a certeza de estar no caminho certo.",
+        "Você ilumina a minha vida como o sol da manhã.",
+        "Cada pedacinho de mim ama cada pedacinho de você.",
+        "Você é o meu felizes para sempre em tempo presente.",
+        "Amo como nos entendemos até em um simples olhar.",
+        "Você é e sempre será a melhor parte do meu dia!"
+      ],
+
+      // 9. Nossos Sonhos para o futuro
+      sonhos: [
+        "Viajar pelo mundo e conhecer lugares inesquecíveis juntos",
+        "Construir e decorar o nosso lar acolhedor do nosso jeito",
+        "Casar numa cerimônia linda cheia de amor e pessoas queridas",
+        "Ter nosso animalzinho de estimação para dar muito carinho",
+        "Assistir ao pôr do sol na praia em uma viagem de férias",
+        "Envelhecer juntos, de mãos dadas e cheios de histórias para contar"
+      ]
+    };
+
+    /* ==========================================================================
+       ESTADO DA APLICAÇÃO E VARIÁVEIS
+       ========================================================================== */
+    let typingIndex = 0;
+    let isTyping = false;
+    let typingTimeout;
+    let isAudioPlaying = false;
+    let audioContext;
+    let synthInterval;
+
+    /* ==========================================================================
+       INICIALIZAÇÃO AO CARREGAR A PÁGINA
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. Preencher Textos da Configuração
+      document.getElementById('hero-name').innerText = CONFIG.nomeNamorada;
+      document.getElementById('hero-quote').innerText = `"${CONFIG.fraseHero}"`;
+      document.getElementById('footer-date').innerText = `${CONFIG.nomeNamorada} & Amor • ${new Date().getFullYear()}`;
+
+      // 2. Renderizar Linha do Tempo, Galeria, Motivos e Sonhos
+      renderizarLinhaDoTempo();
+      renderizarGaleria();
+      renderizarMotivos();
+      renderizarSonhos();
+
+      // 3. Iniciar Canvas Animados
+      initStarsCanvas();
+      initHeartsCanvas();
+
+      // 4. Iniciar Contador em Tempo Real
+      setInterval(atualizarContador, 1000);
+      atualizarContador();
+
+      // 5. Configurar Animação de Scroll Reveal
+      initScrollReveal();
+    });
+
+    /* ==========================================================================
+       1. INICIAR EXPERIÊNCIA E ROLAGEM
+       ========================================================================== */
+    function iniciarExperiencia() {
+      // Tocar som romântico
+      tocarMusica();
+      // Rolar suavemente até a carta
+      scrollToSection('letter-section');
+      // Iniciar digitação da carta
+      iniciarDigitacaoCarta();
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ==========================================================================
+       2. LÓGICA DA CARTA ANIMADA (TYPEWRITER)
+       ========================================================================== */
+    function iniciarDigitacaoCarta() {
+      if (isTyping) return;
+      isTyping = true;
+      typingIndex = 0;
+      document.getElementById('typewriter-text').innerText = '';
+      digitarCaractere();
+    }
+
+    function digitarCaractere() {
+      if (typingIndex < CONFIG.textoCarta.length) {
+        document.getElementById('typewriter-text').innerText += CONFIG.textoCarta.charAt(typingIndex);
+        typingIndex++;
+        typingTimeout = setTimeout(digitarCaractere, 35);
+      } else {
+        isTyping = false;
+      }
+    }
+
+    function pularDigitacao() {
+      clearTimeout(typingTimeout);
+      document.getElementById('typewriter-text').innerText = CONFIG.textoCarta;
+      isTyping = false;
+    }
+
+    function reiniciarCarta() {
+      clearTimeout(typingTimeout);
+      isTyping = false;
+      iniciarDigitacaoCarta();
+    }
+
+    /* ==========================================================================
+       3. CONTADOR DO AMOR
+       ========================================================================== */
+    function atualizarContador() {
+    const inicio = new Date(CONFIG.dataInicio);
+    const agora = new Date();
+
+    let anos = agora.getFullYear() - inicio.getFullYear();
+    let meses = agora.getMonth() - inicio.getMonth();
+    let dias = agora.getDate() - inicio.getDate();
+
+    let horas = agora.getHours() - inicio.getHours();
+    let minutos = agora.getMinutes() - inicio.getMinutes();
+    let segundos = agora.getSeconds() - inicio.getSeconds();
+
+    // Ajusta segundos
+    if (segundos < 0) {
+        segundos += 60;
+        minutos--;
+    }
+
+    // Ajusta minutos
+    if (minutos < 0) {
+        minutos += 60;
+        horas--;
+    }
+
+    // Ajusta horas
+    if (horas < 0) {
+        horas += 24;
+        dias--;
+    }
+
+    // Ajusta dias
+    if (dias < 0) {
+        meses--;
+
+        const ultimoMes = new Date(
+            agora.getFullYear(),
+            agora.getMonth(),
+            0
+        ).getDate();
+
+        dias += ultimoMes;
+    }
+
+    // Ajusta meses
+    if (meses < 0) {
+        meses += 12;
+        anos--;
+    }
+
+    document.getElementById("count-years").innerText = anos;
+    document.getElementById("count-months").innerText = meses;
+    document.getElementById("count-days").innerText = dias;
+    document.getElementById("count-hours").innerText = String(horas).padStart(2, "0");
+    document.getElementById("count-minutes").innerText = String(minutos).padStart(2, "0");
+    document.getElementById("count-seconds").innerText = String(segundos).padStart(2, "0");
+}
+
+    /* ==========================================================================
+       4. RENDERIZADORES DE CONTEÚDO (TIMELINE, GALLERY, REASONS, DREAMS)
+       ========================================================================== */
+    function renderizarLinhaDoTempo() {
+      const container = document.getElementById('timeline-container');
+      container.innerHTML = CONFIG.linhaDoTempo.map(item => `
+        <div class="timeline-item">
+          <div class="timeline-dot">❤️</div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-date">${item.data}</div>
+            <div class="timeline-title">${item.titulo}</div>
+            <div class="timeline-desc">${item.desc}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderizarGaleria() {
+      const grid = document.getElementById('gallery-grid');
+      grid.innerHTML = CONFIG.galeria.map((item, index) => `
+        <div class="gallery-item glass-card" onclick="abrirLightbox(${index})">
+          ${item.svg}
+          <div class="gallery-overlay">
+            <div class="gallery-title">${item.titulo}</div>
+            <div class="gallery-caption">${item.desc}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderizarMotivos() {
+      const grid = document.getElementById('reasons-grid');
+      grid.innerHTML = CONFIG.motivos.map(item => `
+        <div class="reason-card glass-card">
+          <div class="reason-icon">${item.icon}</div>
+          <div class="reason-title">${item.titulo}</div>
+          <div class="reason-text">${item.desc}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderizarSonhos() {
+      const list = document.getElementById('dreams-list');
+      list.innerHTML = CONFIG.sonhos.map((sonho, index) => `
+        <div class="dream-item glass-card" onclick="toggleSonho(this)">
+          <div class="dream-content">
+            <div class="dream-checkbox">✓</div>
+            <span class="dream-text">${sonho}</span>
+          </div>
+          <span>✨</span>
+        </div>
+      `).join('');
+    }
+
+    function toggleSonho(element) {
+      element.classList.toggle('completed');
+      atualizarProgressoSonhos();
+    }
+
+    function atualizarProgressoSonhos() {
+      const total = CONFIG.sonhos.length;
+      const completados = document.querySelectorAll('.dream-item.completed').length;
+      const porcentagem = Math.round((completados / total) * 100);
+      document.getElementById('dreams-progress').style.width = porcentagem + '%';
+    }
+
+    /* ==========================================================================
+       5. LIGHTBOX MODAL
+       ========================================================================== */
+    function abrirLightbox(index) {
+      const item = CONFIG.galeria[index];
+      document.getElementById('modal-media-content').innerHTML = item.svg;
+      document.getElementById('modal-title').innerText = item.titulo;
+      document.getElementById('modal-desc').innerText = item.desc;
+      document.getElementById('lightbox-modal').classList.add('active');
+    }
+
+    function fecharModal() {
+      document.getElementById('lightbox-modal').classList.remove('active');
+    }
+
+    /* ==========================================================================
+       6. MENSAGENS SURPRESA
+       ========================================================================== */
+    function mostrarProximaSurpresa() {
+      const msgElement = document.getElementById('surprise-text');
+      msgElement.style.opacity = 0;
+      msgElement.style.transform = 'translateY(10px)';
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * CONFIG.mensagensSurpresa.length);
+        msgElement.innerText = `"${CONFIG.mensagensSurpresa[randomIndex]}"`;
+        msgElement.style.opacity = 1;
+        msgElement.style.transform = 'translateY(0)';
+      }, 250);
+
+      // Criar explosão leve de corações
+      criarExplosaoCorações();
+    }
+
+    /* ==========================================================================
+       7. PLAYER DE MÚSICA SINTETIZADA / AUDIO
+       ========================================================================== */
+    function toggleAudio() {
+      if (isAudioPlaying) {
+        pausarMusica();
+      } else {
+        tocarMusica();
+      }
+    }
+
+  async function tocarMusica() {
+    const audio = document.getElementById("bg-audio");
+
+    try {
+        audio.load();
+        await audio.play();
+
+        console.log("Música tocando!");
+
+        isAudioPlaying = true;
+        document.getElementById("play-pause-btn").innerHTML = "❚❚";
+        document.getElementById("track-status").innerHTML = "Tocando...";
+        document.getElementById("sound-wave").classList.add("playing");
+
+    } catch (e) {
+        console.error("Erro:", e);
+        console.log("networkState:", audio.networkState);
+        console.log("readyState:", audio.readyState);
+        console.log("currentSrc:", audio.currentSrc);
+        console.log("error:", audio.error);
+    }
+}
+
+    function pausarMusica() {
+      const audio = document.getElementById("bg-audio");
+
+    audio.pause();
+
+    isAudioPlaying = false;
+
+    document.getElementById("play-pause-btn").innerText = "▶";
+    document.getElementById("track-status").innerText = "Pausado";
+    document.getElementById("sound-wave").classList.remove("playing");
+    }
+
+   
+
+    /* ==========================================================================
+       8. CÉU ESTRELADO ANIMADO (CANVAS 1)
+       ========================================================================== */
+    function initStarsCanvas() {
+      const canvas = document.getElementById('stars-canvas');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        stars = Array.from({ length: 150 }, () => ({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2,
+          alpha: Math.random(),
+          speed: Math.random() * 0.01 + 0.005
+        }));
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(star => {
+          star.alpha += star.speed;
+          if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
+
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.alpha)})`;
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    /* ==========================================================================
+       9. CHUVA DE CORAÇÕES E PARTICULAS (CANVAS 2)
+       ========================================================================== */
+    function initHeartsCanvas() {
+      const canvas = document.getElementById('hearts-canvas');
+      const ctx = canvas.getContext('2d');
+      let hearts = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      function createHeart() {
+        if (hearts.length < 25) {
+          hearts.push({
+            x: Math.random() * canvas.width,
+            y: canvas.height + 20,
+            size: Math.random() * 15 + 10,
+            speedY: Math.random() * 1.5 + 0.8,
+            speedX: Math.sin(Math.random() * Math.PI) * 0.5,
+            opacity: Math.random() * 0.6 + 0.4
+          });
+        }
+      }
+
+      function drawHeartPath(x, y, size) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.bezierCurveTo(x - size / 2, y - size / 2, x - size, y + size / 3, x, y + size);
+        ctx.bezierCurveTo(x + size, y + size / 3, x + size / 2, y - size / 2, x, y);
+        ctx.fill();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        createHeart();
+
+        hearts.forEach((h, index) => {
+          h.y -= h.speedY;
+          h.x += h.speedX;
+
+          ctx.fillStyle = `rgba(255, 75, 139, ${h.opacity})`;
+          drawHeartPath(h.x, h.y, h.size);
+
+          if (h.y < -30) hearts.splice(index, 1);
+        });
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    function criarExplosaoCorações() {
+      const canvas = document.getElementById('hearts-canvas');
+      const ctx = canvas.getContext('2d');
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          ctx.fillStyle = 'rgba(255, 75, 139, 0.8)';
+          const x = Math.random() * canvas.width;
+          const y = Math.random() * canvas.height;
+          ctx.beginPath();
+          ctx.arc(x, y, Math.random() * 8 + 4, 0, Math.PI * 2);
+          ctx.fill();
+        }, i * 30);
+      }
+    }
+
+    /* ==========================================================================
+       12. PEDIDO FINAL / EXPLOSÃO DE AMOR
+       ========================================================================== */
+    function dispararExplosaoDeAmor() {
+      const flash = document.getElementById('flash-overlay');
+      flash.classList.add('active');
+      setTimeout(() => flash.classList.remove('active'), 1200);
+
+      // Confetes e partículas mágicas
+      initConfetti();
+    }
+
+    function initConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let confetti = Array.from({ length: 120 }, () => ({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 20,
+        vy: (Math.random() - 0.5) * 20 - 5,
+        size: Math.random() * 10 + 5,
+        color: ['#ff4b8b', '#ffd166', '#9d4edd', '#ffffff'][Math.floor(Math.random() * 4)],
+        alpha: 1
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confetti.forEach((p, i) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.2; // gravidade
+          p.alpha -= 0.015;
+
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = Math.max(0, p.alpha);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+
+          if (p.alpha <= 0) confetti.splice(i, 1);
+        });
+
+        if (confetti.length > 0) {
+          requestAnimationFrame(animate);
+        } else {
+          alert('Você é a melhor parte da minha vida! Te amo para sempre! ❤️');
+        }
+      }
+      animate();
+    }
+
+    /* ==========================================================================
+       SCROLL REVEAL (ANIMAÇÃO AO ROLAR A PÁGINA)
+       ========================================================================== */
+    function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+  </script>
+</body>
+</html>
