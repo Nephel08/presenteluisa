@@ -480,6 +480,26 @@
       color: var(--text-muted);
     }
 
+   .gallery-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
+    transition:.4s;
+}
+
+.gallery-item:hover .gallery-photo{
+    transform:scale(1.05);
+}
+
+.lightbox-photo{
+    width:100%;
+    max-height:70vh;
+    object-fit:contain;
+    border-radius:20px;
+}
+
     /* Lightbox Modal */
     .modal-overlay {
       position: fixed;
@@ -1213,38 +1233,54 @@ Seu Amor. ❤️`,
 
       // 6. Galeria de Fotos (Ilustrações em SVG integradas para funcionar 100% offline).
       // DICA DE EDIÇÃO: Você pode substituir 'svg' abaixo pelo caminho das suas fotos reais (Ex: "fotos/foto1.jpg")!
-      galeria: [
-        {
-          titulo: "Sob o Céu Estrelado",
-          desc: "Conversando sobre tudo e nada até altas horas.",
-          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#12082b"/><circle cx="200" cy="150" r="70" fill="#ffd166" opacity="0.8"/><circle cx="180" cy="140" r="60" fill="#12082b"/><path d="M150 350 C180 280 220 280 250 350 Z" fill="#ff4b8b" opacity="0.7"/><circle cx="100" cy="80" r="2" fill="#fff"/><circle cx="300" cy="90" r="3" fill="#fff"/><circle cx="250" cy="50" r="2" fill="#fff"/></svg>`
-        },
-        {
-          titulo: "Pôr do Sol Inesquecível",
-          desc: "A luz do fim de tarde refletida no seu olhar.",
-          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff7b00"/><stop offset="100%" stop-color="#6a040f"/></linearGradient></defs><rect width="400" height="400" fill="url(#g1)"/><circle cx="200" cy="220" r="80" fill="#ffdda1"/><path d="M0 260 Q 200 240 400 260 L 400 400 L 0 400 Z" fill="#2b0938"/></svg>`
-        },
-        {
-          titulo: "Café da Manhã e Risadas",
-          desc: "O simples prazer de começar o dia ao seu lado.",
-          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#1d1135"/><path d="M120 220 C 120 300 280 300 280 220 Z" fill="#fff" opacity="0.15"/><path d="M180 180 Q 200 140 190 100" stroke="#ff4b8b" stroke-width="4" fill="none" opacity="0.6"/><path d="M210 180 Q 230 140 220 100" stroke="#ff4b8b" stroke-width="4" fill="none" opacity="0.6"/></svg>`
-        },
-        {
-          titulo: "Caminhada de Mãos Dadas",
-          desc: "Onde você estiver é o meu caminho favorito.",
-          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#0f172a"/><path d="M200 120 C 120 20 20 180 200 320 C 380 180 280 20 200 120 Z" fill="#ff4b8b" opacity="0.4"/><circle cx="200" cy="180" r="40" fill="#9d4edd" opacity="0.6"/></svg>`
-        },
-        {
-          titulo: "Flores e Carinho",
-          desc: "Pequenos gestos para demonstrar um amor gigante.",
-          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#200d2a"/><circle cx="200" cy="200" r="50" fill="#ff4b8b"/><circle cx="150" cy="200" r="40" fill="#ff75a0" opacity="0.7"/><circle cx="250" cy="200" r="40" fill="#ff75a0" opacity="0.7"/><circle cx="200" cy="150" r="40" fill="#ff75a0" opacity="0.7"/><circle cx="200" cy="250" r="40" fill="#ff75a0" opacity="0.7"/></svg>`
-        },
-        {
-          titulo: "Abraço Acolhedor",
-          desc: "Meu lugar favorito no universo inteiro.",
-          svg: `<svg viewBox="0 0 400 400" width="100%" height="100%"><rect width="400" height="400" fill="#13091f"/><path d="M100 200 Q 200 100 300 200 Q 200 300 100 200 Z" fill="#ffd166" opacity="0.3"/><circle cx="200" cy="200" r="60" fill="#ff4b8b" opacity="0.5"/></svg>`
-        }
-      ],
+     galeria: [
+{
+    titulo: "Pôr do Sol com Você",
+    desc: "Um Momento Lindo. ❤️",
+    imagem: "fotos/foto01.jpg"
+},
+{
+    titulo: "Nosso Primeiro Piquenique",
+    desc: "Nunca vou esquecer esse dia.",
+    imagem: "fotos/foto02.webp"
+},
+{
+    titulo: "Nosso Sorriso",
+    desc: "Meu lugar favorito é ao seu lado.",
+    imagem: "fotos/foto03.webp"
+},
+{
+    titulo: "Nossa Primeira Foto Juntos",
+    desc: "Cada segundo valeu a pena.",
+    imagem: "fotos/foto04.jpg"
+},
+{
+    titulo: "Nós Dois",
+    desc: "Meu amor por você cresce todos os dias.",
+    imagem: "fotos/foto05.jpg"
+},
+{
+    titulo: "Para Sempre",
+    desc: "Que venham muitos momentos juntos.",
+    imagem: "fotos/foto08.jpg"
+},
+{
+    titulo: "O Dia do Buquê",
+    desc: "Lindo assim como você.",
+    imagem: "fotos/foto07.jpg"
+},
+{
+    titulo: "Nosso Primeiro Natal Juntos",
+    desc: "Meu melhor presente.",
+    imagem: "fotos/foto06.jpg"
+},
+{
+    titulo: "Amor em Cada Detalhe",
+    desc: "Cada momento ao seu lado é um presente.",
+    imagem: "fotos/foto09.jpg"
+}
+
+],
 
       // 7. Motivos pelos quais te amo
       motivos: [
@@ -1322,7 +1358,7 @@ Seu Amor. ❤️`,
       // 1. Preencher Textos da Configuração
       document.getElementById('hero-name').innerText = CONFIG.nomeNamorada;
       document.getElementById('hero-quote').innerText = `"${CONFIG.fraseHero}"`;
-      document.getElementById('footer-date').innerText = `${CONFIG.nomeNamorada} & Amor • ${new Date().getFullYear()}`;
+      document.getElementById('footer-date').innerText = `${CONFIG.nomeNamorada} & Willyan • ${new Date().getFullYear()}`;
 
       // 2. Renderizar Linha do Tempo, Galeria, Motivos e Sonhos
       renderizarLinhaDoTempo();
@@ -1468,18 +1504,26 @@ Seu Amor. ❤️`,
       `).join('');
     }
 
-    function renderizarGaleria() {
-      const grid = document.getElementById('gallery-grid');
-      grid.innerHTML = CONFIG.galeria.map((item, index) => `
+   function renderizarGaleria() {
+    const grid = document.getElementById('gallery-grid');
+
+    grid.innerHTML = CONFIG.galeria.map((item, index) => `
         <div class="gallery-item glass-card" onclick="abrirLightbox(${index})">
-          ${item.svg}
-          <div class="gallery-overlay">
-            <div class="gallery-title">${item.titulo}</div>
-            <div class="gallery-caption">${item.desc}</div>
-          </div>
+
+            <img
+                src="${item.imagem}"
+                alt="${item.titulo}"
+                class="gallery-photo"
+            >
+
+            <div class="gallery-overlay">
+                <div class="gallery-title">${item.titulo}</div>
+                <div class="gallery-caption">${item.desc}</div>
+            </div>
+
         </div>
-      `).join('');
-    }
+    `).join('');
+}
 
     function renderizarMotivos() {
       const grid = document.getElementById('reasons-grid');
@@ -1521,13 +1565,17 @@ Seu Amor. ❤️`,
        5. LIGHTBOX MODAL
        ========================================================================== */
     function abrirLightbox(index) {
-      const item = CONFIG.galeria[index];
-      document.getElementById('modal-media-content').innerHTML = item.svg;
-      document.getElementById('modal-title').innerText = item.titulo;
-      document.getElementById('modal-desc').innerText = item.desc;
-      document.getElementById('lightbox-modal').classList.add('active');
-    }
+    const item = CONFIG.galeria[index];
 
+    document.getElementById("modal-media-content").innerHTML = `
+        <img src="${item.imagem}" class="lightbox-photo">
+    `;
+
+    document.getElementById("modal-title").innerText = item.titulo;
+    document.getElementById("modal-desc").innerText = item.desc;
+
+    document.getElementById("lightbox-modal").classList.add("active");
+}
     function fecharModal() {
       document.getElementById('lightbox-modal').classList.remove('active');
     }
